@@ -1,0 +1,14 @@
+{
+  "name": "1DevDay"
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "3.0.0rc3",
+    "request": "*",
+    "socket.io": "0.9.10",
+    "ejs": "*"
+  }
+}
