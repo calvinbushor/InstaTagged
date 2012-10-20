@@ -1,6 +1,11 @@
 var socket = io.connect('http://localhost');
 
-socket.on('news', function (data) {
+socket.on('images', function(data) {
 	console.log(data);
-	socket.emit('my other event', { my: 'data' });
+	for ( var i=0; i<data.length; i++) {
+		var url = data[i];
+
+		$('body').prepend(
+			'<div class="media"><img src="' + url + '" alt="Image from instagram API."/></div>')
+	}
 });

@@ -1,6 +1,6 @@
 {
   "name": "1DevDay",
-  "version": "0.0.1-1",
+  "version": "0.0.1-4",
   "description": "Demo app for 1DevDay.",
   "author": {
     "name": "Calvin Bushor",
@@ -13,8 +13,8 @@
   "dependencies": {
     "express": "3.0.0rc3",
     "ejs": "*",
-    "request": "2.11.4",
-    "socket": "0.9.10"
+    "request": "*",
+    "socket.io": "*"
   },
   "subdomain": "1devday",
   "engines": {

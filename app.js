@@ -8,6 +8,7 @@ var express = require('express')
   , routes  = require('./routes')
   , http    = require('http')
   , path    = require('path')
+  , request = require('request')
   , app     = express()
   , server  = http.createServer(app);
 
@@ -37,9 +38,53 @@ server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
-io.sockets.on('connection', function (socket) {
-  socket.emit('news', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
+var options = {
+  method: 'GET',
+  uri: 'https://api.instagram.com/v1/tags/1devday/media/recent?client_id=f8d635078bcc46c0b297cc914233ac8c',
+  json: true
+}
+
+var cache = {};
+
+// function sendCached(socket) {
+//   var images = [];
+
+//   for ( var obj in cache ) {
+//     var url = cache[obj];
+
+//     images.push(url);
+//   }
+
+//   socket.emit('images', images);
+// }
+
+function instaWhat(socket) {
+  request(options, function(err, response) {
+    var data = response['body']['data'];
+    var images = [];
+
+    for ( var i=0; i<data.length; i++ ) {
+      var image = {},
+          id    = data[i]['id'].toString(),
+          url   = data[i]['images']['standard_resolution']['url'];
+
+      if ( undefined != cache[id] ) continue;
+
+      cache[id] = url;
+      images.push(url);
+    }
+
+    if ( 0 < images.length ) {
+      socket.emit('images', images);
+    }
   });
+}
+  
+
+io.sockets.on('connection', function (socket) {
+  instaWhat(socket);
+  
+  setInterval(function() {
+    instaWhat(socket);
+  }, 10000);
 });
