@@ -44,45 +44,33 @@ var options = {
   json: true
 }
 
-var cache = {};
-
-function sendCached(socket) {
-  var images = [];
-
-  for ( var obj in cache ) {
-    var url = cache[obj];
-
-    images.push(url);
-  }
-
-  socket.emit('images', images);
-}
+var images = {};
 
 function instaWhat(socket) {
   request(options, function(err, response) {
-    var data = response['body']['data'];
-    var images = [];
+    var data = response['body']['data'],
+        flag = false;
 
     for ( var i=0; i<data.length; i++ ) {
-      var image = {},
-          id    = data[i]['id'].toString(),
+      var id    = data[i]['id'].toString(),
           url   = data[i]['images']['standard_resolution']['url'];
 
-      if ( undefined != cache[id] ) continue;
+      if ( undefined != images[id] ) continue;
 
-      cache[id] = url;
-      images.push(url);
+      flag = true;
+      images[id] = url;
     }
 
-    if ( 0 < images.length ) {
+    if ( flag ) {
       socket.emit('images', images);
+      flag = false; // reset
     }
   });
 }
   
-
 io.sockets.on('connection', function (socket) {
-  sendCached(socket);
+  // sendCached(socket);
+  socket.emit('images', images);
   instaWhat(socket);
   
   setInterval(function() {
