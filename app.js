@@ -46,17 +46,17 @@ var options = {
 
 var cache = {};
 
-// function sendCached(socket) {
-//   var images = [];
+function sendCached(socket) {
+  var images = [];
 
-//   for ( var obj in cache ) {
-//     var url = cache[obj];
+  for ( var obj in cache ) {
+    var url = cache[obj];
 
-//     images.push(url);
-//   }
+    images.push(url);
+  }
 
-//   socket.emit('images', images);
-// }
+  socket.emit('images', images);
+}
 
 function instaWhat(socket) {
   request(options, function(err, response) {
@@ -82,6 +82,7 @@ function instaWhat(socket) {
   
 
 io.sockets.on('connection', function (socket) {
+  sendCached(socket);
   instaWhat(socket);
   
   setInterval(function() {
