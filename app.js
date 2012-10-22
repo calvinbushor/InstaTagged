@@ -1,4 +1,5 @@
 io = require('socket.io');
+var client_id = 'f8d635078bcc46c0b297cc914233ac8c';
 
 /**
  * Module dependencies.
@@ -38,9 +39,10 @@ server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
+
 var options = {
   method: 'GET',
-  uri: 'https://api.instagram.com/v1/tags/1devday/media/recent?client_id=f8d635078bcc46c0b297cc914233ac8c',
+  uri: 'https://api.instagram.com/v1/tags/1devday/media/recent?client_id=' + client_id,
   json: true
 }
 
@@ -50,6 +52,8 @@ function instaWhat(socket) {
   request(options, function(err, response) {
     var data = response['body']['data'],
         flag = false;
+
+    data = data.reverse();
 
     for ( var i=0; i<data.length; i++ ) {
       var id    = data[i]['id'].toString(),
