@@ -33,3 +33,37 @@ form.updateTag {
 form.updateTag input {
 	font-size: 1.5em;
 }
+
+.inline {
+	overflow: hidden;
+}
+.inline label, .inline input {
+	float: left;
+}
+.inline label {
+	color: #999;
+	margin-right: .3em;
+	font-size: 2.1em;
+}
+.inline input[type="text"] {
+	margin-right: .5em;
+}
+
+.btn {
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	background-color: rgb(140, 200, 75);
+	color: #fff;
+	border: none;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
+	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+	cursor: pointer;
+}
+.btn:hover {
+	background-color: #709e3c;
+}
