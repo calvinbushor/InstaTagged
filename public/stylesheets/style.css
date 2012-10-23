@@ -79,6 +79,8 @@ form.updateTag input {
 	-moz-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
 	-o-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
 	cursor: pointer;
+
+	padding: .07em .3em;
 }
 .btn:hover {
 	background-color: #709e3c;
