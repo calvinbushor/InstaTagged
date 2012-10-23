@@ -5,9 +5,14 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <div id="hidden" style="display: none;"></div>
-    <!-- <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p> -->
+    <h1><%= title %></h1>
+    <form class="updateTag" action="/update-tag">      
+      <input class="tagName" type="text" placeholder="1devday">
+      <input type="submit">
+    </form>
+    <div class="instatagged">
+    </div>
+    
     <script src="/javascripts/socket.io.js"></script>
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/main.js"></script>
