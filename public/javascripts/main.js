@@ -24,11 +24,10 @@ socket.on('images', function(images) {
 	$.fn.updateTag = function() {
 		return this.each(function() {
 			$(this).on('submit', function(e) {
-				e.preventDefault();
-
 				var tag = $(this).closest('form').find('.tagName').val();
 
 				socket.emit('updateTag', {tag: tag});
+				return false;
 			});
 		});
 	}
