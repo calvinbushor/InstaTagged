@@ -21,17 +21,15 @@ img {
 
 .instatagged {
 	overflow: hidden;
-	/*width: 90%;*/
 	margin: 2% auto;
 }
 
 form.updateTag {
-	/*width: 90%;*/
 	margin: 1% auto;
 }
 
 form.updateTag input {
-	font-size: 1.5em;
+	font-size: 3em;
 }
 
 .inline {
@@ -43,7 +41,7 @@ form.updateTag input {
 .inline label {
 	color: #999;
 	margin-right: .3em;
-	font-size: 2.1em;
+	font-size: 3.5em;
 }
 .inline input[type="text"] {
 	margin-right: .5em;
@@ -58,11 +56,16 @@ form.updateTag input {
 	background-color: rgb(140, 200, 75);
 	color: #fff;
 	border: none;
-	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
-	-webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
-	-moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
-	-o-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.5);
-	text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.8);
+	
+	box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	
+	text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	-webkit-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	-moz-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	-o-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
 	cursor: pointer;
 }
 .btn:hover {
