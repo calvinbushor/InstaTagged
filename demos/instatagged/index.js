@@ -4,7 +4,7 @@
 function instatagged(socket) {
 	this.socket      = socket;
 	this.tag         = '1devday';
-	this.client_id   = 'f8d635078bcc46c0b297cc914233ac8c';
+	this.client_id   = process.env.INSTAGRAM_CID;
 	this.instatagged = this;
 	this.events   = require('events');	
 	this.util     = require('util');
@@ -17,6 +17,8 @@ function instatagged(socket) {
 
 instatagged.prototype.init = function() {
 	var that = this;
+
+	if ( undefined == that.client_id ) return;
 
 	// Send cached images
 	that.sendImages();

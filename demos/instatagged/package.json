@@ -15,7 +15,8 @@
   },
   "dependencies": {
     "socket.io-client": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "request": "*"
   },
   "main": "index.js",
   "engines": {

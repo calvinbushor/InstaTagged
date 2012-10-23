@@ -39,7 +39,7 @@ server.listen(app.get('port'), function(){
 
 // Init instatagged on socket connection
 io.sockets.on('connection', function (socket) {
-  var instatagged = require('instatagged');
+  var instatagged = require('./demos/instatagged');
 
   instatagged = new instatagged(socket);
   instatagged.init();
