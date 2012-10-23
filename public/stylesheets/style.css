@@ -8,6 +8,16 @@ a {
   color: #00B7FF;
 }
 
+h1 {
+	font-size: 3em;
+	color: #333;
+}
+
+p {
+	font-size: 2em;
+	color: #333;
+}
+
 img {
 	max-width: 100%;
 	display: block;
