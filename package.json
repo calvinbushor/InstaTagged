@@ -1,0 +1,18 @@
+{
+  "name": "instatagged",
+  "version": "0.0.1-3",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "subdomain": "instatagged",
+  "dependencies": {
+    "express": "3.0.0rc3",
+    "request": "*",
+    "socket.io": "*",
+    "ejs": "*"
+  },
+  "engines": {
+    "node": "0.8.x"
+  }
+}

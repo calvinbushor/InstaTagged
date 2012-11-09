@@ -1,0 +1,108 @@
+body {
+  padding: 50px;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0 5%;
+  color: #333;
+  background-color: #eee;
+}
+
+a {
+  color: #00B7FF;
+}
+
+h1 {
+	font-size: 3em;
+	color: #333;
+}
+
+p {
+	font-size: 2em;
+	color: #333;
+}
+
+img {
+	max-width: 100%;
+	display: block;
+}
+
+.media {
+	width: 100%;
+	margin: 3% 0;
+}
+
+.media img {
+	width: 90%;
+	margin: 0 5%;
+}
+
+.instatagged {
+	overflow: hidden;
+	margin: 2% auto;
+}
+
+form.updateTag {
+	margin: 1% auto;
+}
+
+form.updateTag input {
+	font-size: 1.8em;
+}
+
+.inline {
+	overflow: hidden;
+}
+.inline label, .inline input {
+	float: left;
+}
+.inline label {
+	color: #999;
+	margin-right: .3em;
+	font-size: 2.2em;
+}
+.inline input[type="text"] {
+	margin-right: .5em;
+	max-width: 60%;
+}
+
+.btn {
+	-webkit-appearance: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px;
+	background-color: rgb(140, 200, 75);
+	color: #fff;
+	border: none;
+	
+	box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	-webkit-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	-moz-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	-o-box-shadow: 1px 1px 6px 1px rgba(0, 0, 0, 0.5);
+	
+	text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	-webkit-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	-moz-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	-o-text-shadow: 1px 2px 1px rgba(0, 0, 0, 0.8);
+	cursor: pointer;
+
+	padding: .07em .3em;
+}
+.btn:hover {
+	background-color: #709e3c;
+}
+
+@media (min-width: 500px) {
+	.media { 
+		width: 50%;
+		float: left;
+		margin: 1% 0;
+	}
+
+	form.updateTag input {
+		font-size: 2.5em;
+	}
+
+	form.updateTag label {
+		font-size: 3em;
+	}
+}
