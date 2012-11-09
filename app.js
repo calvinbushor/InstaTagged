@@ -2,16 +2,34 @@
 /**
  * Module dependencies.
  */
-var io       = require('socket.io'),
-    express  = require('express')
-  , routes   = require('./routes')
-  , http     = require('http')
-  , path     = require('path')
-  , request  = require('request')
-  , app      = express()
-  , server   = http.createServer(app);
 
-io = io.listen(server);
+var express = require('express')
+  , routes  = require('./routes')
+  , http    = require('http')
+  , path    = require('path')
+  , app     = express()
+  , server  = http.createServer(app)
+  , io      = require('socket.io').listen(server)
+  , instatagged = require('./class/instatagged/instatagged.js');
+
+io.sockets.on('connection', function(socket) {
+  var tagger = new instatagged(process.env['INSTAGRAM_CLIENT_ID']);
+
+  socket.emit('/set-id', socket['id']);
+
+  // Send new images to client
+  tagger.on('/fetched', function(images) {
+    socket.emit('/new-images', images);
+  });
+
+  // Fetch images by tag entered
+  socket.on('/fetch-by-tag', function(data) {
+    var tag = data['tag'],
+        id  = data['id'];
+
+    tagger.fetchImagesByTag(tag);
+  });
+});
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -35,12 +53,4 @@ app.get('/', routes.index);
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
-});
-
-// Init instatagged on socket connection
-io.sockets.on('connection', function (socket) {
-  var instatagged = require('./demos/instatagged');
-
-  instatagged = new instatagged(socket);
-  instatagged.init();
 });

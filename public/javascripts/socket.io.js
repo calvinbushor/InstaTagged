@@ -1656,6 +1656,7 @@ var io = ('undefined' === typeof module ? {} : module.exports);
           }
         }
       };
+      console.log(xhr);
       xhr.send(null);
     }
   };

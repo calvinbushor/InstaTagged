@@ -1,7 +1,14 @@
-var socket = io.connect('/'),
+var socket = io,
+	id     = undefined,
 	cache  = {};
 
-socket.on('images', function(images) {
+socket = socket.connect('/');
+
+socket.on('/set-id', function(data) {
+	id = socket.socket.sessionid;
+});
+
+function handleImages(images) {
 	for ( var id in images ) {
 		var url = images[id],
 			image;
@@ -18,15 +25,20 @@ socket.on('images', function(images) {
 		$('.instatagged').prepend(image);		
 		image.fadeIn(3000);
 	}
+}
+
+socket.on('/new-images', function(images) {
+	console.log('new images');
+	handleImages(images);
 });
 
 (function( $ ) {
 	$.fn.updateTag = function() {
 		return this.each(function() {
 			$(this).on('submit', function(e) {
-				var tag = $(this).closest('form').find('.tagName').val();
+				var tag  = $(this).closest('form').find('.tagName').val();
 
-				socket.emit('updateTag', {tag: tag});
+				socket.emit('/fetch-by-tag', {tag: tag, id: id});
 				return false;
 			});
 		});

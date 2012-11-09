@@ -1,22 +1,17 @@
 {
-  "name": "1DevDay",
-  "version": "0.0.1-22",
-  "description": "Demo app for 1DevDay.",
-  "author": {
-    "name": "Calvin Bushor",
-    "email": "calvinbushor@gmail.com"
-  },
+  "name": "instatagged",
+  "version": "0.0.1-3",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
+  "subdomain": "instatagged",
   "dependencies": {
     "express": "3.0.0rc3",
-    "ejs": "*",
     "request": "*",
-    "socket.io": "*"
+    "socket.io": "*",
+    "ejs": "*"
   },
-  "subdomain": "1devday",
   "engines": {
     "node": "0.8.x"
   }

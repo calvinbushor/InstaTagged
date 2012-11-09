@@ -1,6 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 15px "Lucida Grande", Helvetica, Arial, sans-serif;
   padding: 0 5%;
   color: #333;
   background-color: #eee;
@@ -26,9 +26,13 @@ img {
 }
 
 .media {
-	width: 30%;
-	float: left;
-	margin: 1% 3% 1% 0;
+	width: 100%;
+	margin: 3% 0;
+}
+
+.media img {
+	width: 90%;
+	margin: 0 5%;
 }
 
 .instatagged {
@@ -41,7 +45,7 @@ form.updateTag {
 }
 
 form.updateTag input {
-	font-size: 3em;
+	font-size: 1.8em;
 }
 
 .inline {
@@ -53,10 +57,11 @@ form.updateTag input {
 .inline label {
 	color: #999;
 	margin-right: .3em;
-	font-size: 3.5em;
+	font-size: 2.2em;
 }
 .inline input[type="text"] {
 	margin-right: .5em;
+	max-width: 60%;
 }
 
 .btn {
@@ -84,4 +89,20 @@ form.updateTag input {
 }
 .btn:hover {
 	background-color: #709e3c;
+}
+
+@media (min-width: 500px) {
+	.media { 
+		width: 50%;
+		float: left;
+		margin: 1% 0;
+	}
+
+	form.updateTag input {
+		font-size: 2.5em;
+	}
+
+	form.updateTag label {
+		font-size: 3em;
+	}
 }
