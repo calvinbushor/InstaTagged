@@ -1,6 +1,7 @@
-var socket = io,
-	id     = undefined,
-	cache  = {};
+var socket  = io,
+	id      = undefined,
+	currTag = undefined,
+	cache   = {};
 
 socket = socket.connect('/');
 
@@ -27,18 +28,45 @@ function handleImages(images) {
 	}
 }
 
+socket.on('/message', function(msg) {
+	console.log(msg);
+});
+
 socket.on('/new-images', function(images) {
-	console.log('new images');
 	handleImages(images);
+});
+
+socket.on('/are-you-subscribed', function(data) {
+	var tag = data['tag'],
+		id  = data['id'];
+
+	if ( tag === currTag ) {
+		socket.emit('/yes-i-am-subscribed', tag, id);
+	}
 });
 
 (function( $ ) {
 	$.fn.updateTag = function() {
-		return this.each(function() {
-			$(this).on('submit', function(e) {
-				var tag  = $(this).closest('form').find('.tagName').val();
+		function getImages(tag) {
+			if ( undefined === tag ) return;
+			
+			currTag = tag;
+			socket.emit('/fetch-by-tag', {tag: tag, id: id});
 
-				socket.emit('/fetch-by-tag', {tag: tag, id: id});
+			History.pushState({tag: tag, id: id}, 'Instatagged', '?tag=' + tag);
+		}
+
+		return this.each(function() {
+			var state = History.getState();
+
+			if ( undefined !== state['data']['tag'] ) {				
+				getImages(state['data']['tag']);
+			}
+
+			$(this).on('submit', function(e) {
+				var tag = $(this).closest('form').find('.tagName').val();
+				
+				getImages(tag);
 				return false;
 			});
 		});
