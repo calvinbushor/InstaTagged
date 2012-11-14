@@ -61,7 +61,7 @@ form.updateTag input {
 }
 .inline input[type="text"] {
 	margin-right: .5em;
-	max-width: 60%;
+	max-width: 50%;
 }
 
 .btn {
@@ -91,9 +91,63 @@ form.updateTag input {
 	background-color: #709e3c;
 }
 
+.active {
+  	-webkit-animation-duration: 3s;
+  	-webkit-animation-name: pulse;
+  	-webkit-animation-iteration-count: infinite;
+  	-moz-animation-duration: 3s;
+  	-moz-animation-name: pulse;
+  	-moz-animation-iteration-count: infinite;
+  	-o-animation-duration: 3s;
+  	-o-animation-name: pulse;
+  	-o-animation-iteration-count: infinite;
+}
+
+@-webkit-keyframes pulse {
+	from {
+		color: #333;
+	}
+
+	50% {
+		color: #ddd;
+	}
+
+	to {
+		color: #333;
+	}
+}
+
+@-moz-keyframes pulse {
+	from {
+		color: #333;
+	}
+
+	50% {
+		color: #ddd;
+	}
+
+	to {
+		color: #333;
+	}
+}
+
+@-o-keyframes pulse {
+	from {
+		color: #333;
+	}
+
+	50% {
+		color: #ddd;
+	}
+
+	to {
+		color: #333;
+	}
+}
+
 @media (min-width: 500px) {
 	.media { 
-		width: 50%;
+		width: 33%;
 		float: left;
 		margin: 1% 0;
 	}

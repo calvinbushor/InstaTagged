@@ -35,6 +35,17 @@ app.configure('development', function(){
 
 var tracker = {};
 
+// clean up the tags
+setInterval(function() {
+  var key;
+
+  for ( key in tracker ) {
+    if ( 0 === tracker[key] ) {
+      delete tracker[key];
+    }
+  }
+}, 60000);
+
 io.sockets.on('connection', function(socket) {
   var tagger  = new instatagged();
   var current = {
