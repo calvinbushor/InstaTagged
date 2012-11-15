@@ -68,7 +68,8 @@
 
 		if ( undefined !== state['hash'] ) {
 			var tag = state['hash'].match(/\?tag=+(\w*\d*)+/);
-			if ( null !== tag[1] ) {
+
+			if ( null !== tag ) {
 				input.val(tag[1]);
 				input.addClass('active');
 				getImages(tag[1]);				
