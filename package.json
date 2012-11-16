@@ -1,6 +1,6 @@
 {
   "name": "instatagged",
-  "version": "0.0.1-44",
+  "version": "0.0.1-45",
   "private": true,
   "scripts": {
     "start": "node app.js"
